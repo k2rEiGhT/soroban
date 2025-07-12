@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>そろばん読み上げ算</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div class="container">
+    <h1>そろばん読み上げ算</h1>
+
+    <div class="controls">
+      <label for="digits">桁数:</label>
+      <select id="digits">
+        <option value="1">1桁</option>
+        <option value="2">2桁</option>
+        <option value="3">3桁</option>
+        <option value="4" selected>4桁</option>
+        <option value="mixed34">3桁と4桁の混合</option>
+        <option value="6">6桁</option>
+        <option value="7">7桁</option>
+        <option value="8">8桁</option>
+
+      </select>
+
+      <label for="count">口数:</label>
+      <select id="count">
+        <option value="3">3口</option>
+        <option value="4" selected>4口</option>
+        <option value="5">5口</option>
+        <option value="7">7口</option>
+        <option value="9">9口</option>
+        <option value="10">10口</option>
+      </select>
+
+      <label for="speed">速度:</label>
+      <select id="speed">
+          <option value="slow">ゆっくり</option>
+          <option value="normal" selected>ふつう</option>
+          <option value="fast">はやい</option>
+      </select>
+
+
+      <label for="mode">問題の種類:</label>
+      <select id="mode">
+        <option value="add" selected>足し算</option>
+        <option value="mix">足し算と引き算</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button id="start-button">スタート</button>
+      <button id="stop-button">ストップ</button>
+    </div>
+
+    <p id="current"></p>
+
+    <div id="answer-container">
+      <label for="answer-input">回答：</label>
+      <input type="text" id="answer-input" inputmode="numeric" autocomplete="off" />
+      <p id="result"></p>
+      <button id="next-button">次の問題へ</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
