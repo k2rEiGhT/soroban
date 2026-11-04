@@ -16,8 +16,13 @@ const startButton = document.getElementById("start-button");
 
 // 初回の画面タッチ・クリック時にWeb Speech APIの制限を解除
 const unlockSpeechAPI = () => {
-  const utterance = new SpeechSynthesisUtterance('');
-  utterance.volume = 0.01; // 無音で実行
+  // iOSのバグ対策: 一度キャンセルを挟むと安定しやすい
+  window.speechSynthesis.cancel();
+
+  // 空文字ではなく確実に発音される文字にする
+  const utterance = new SpeechSynthesisUtterance('あ');
+  utterance.volume = 0.01; // 0ではなく極小の音にする
+  utterance.rate = 10;     // 最速で終わらせる
   window.speechSynthesis.speak(utterance);
 
   // 一度実行したら不要になるためイベントリスナーを解除
