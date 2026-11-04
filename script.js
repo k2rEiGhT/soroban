@@ -14,6 +14,20 @@ const resultEl = document.getElementById("result");
 const nextButton = document.getElementById("next-button");
 const startButton = document.getElementById("start-button");
 
+// 初回の画面タッチ・クリック時にWeb Speech APIの制限を解除
+const unlockSpeechAPI = () => {
+  const utterance = new SpeechSynthesisUtterance('');
+  utterance.volume = 0; // 無音で実行
+  window.speechSynthesis.speak(utterance);
+
+  // 一度実行したら不要になるためイベントリスナーを解除
+  document.removeEventListener('touchstart', unlockSpeechAPI);
+  document.removeEventListener('click', unlockSpeechAPI);
+};
+
+
+document.addEventListener('touchstart', unlockSpeechAPI);
+document.addEventListener('click', unlockSpeechAPI);
 startButton.addEventListener("click", start);
 document.getElementById("stop-button").addEventListener("click", stop);
 nextButton.addEventListener("click", checkAnswer);
