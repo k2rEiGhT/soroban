@@ -17,7 +17,7 @@ const startButton = document.getElementById("start-button");
 // 初回の画面タッチ・クリック時にWeb Speech APIの制限を解除
 const unlockSpeechAPI = () => {
   const utterance = new SpeechSynthesisUtterance('');
-  utterance.volume = 0; // 無音で実行
+  utterance.volume = 0.01; // 無音で実行
   window.speechSynthesis.speak(utterance);
 
   // 一度実行したら不要になるためイベントリスナーを解除
@@ -31,14 +31,14 @@ document.addEventListener('click', unlockSpeechAPI);
 startButton.addEventListener("click", start);
 document.getElementById("stop-button").addEventListener("click", stop);
 nextButton.addEventListener("click", checkAnswer);
-answerInput.addEventListener("keydown", function(event) {
+answerInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     checkAnswer();
   }
 });
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     stop();
   }
