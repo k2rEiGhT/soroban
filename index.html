@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <title>そろばん読み上げ算</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.png" type="image/x-icon">
 </head>
+
 <body>
   <div class="container">
     <h1>そろばん読み上げ算</h1>
@@ -16,9 +18,9 @@
         <option value="1">1桁</option>
         <option value="2">2桁</option>
         <option value="3">3桁</option>
-        <option value="4">4桁</option>
+        <option value="4" selected>4桁</option>
         <option value="mixed34">3桁と4桁の混合</option>
-        <option value="5" selected>5桁</option>
+        <option value="5">5桁</option>
         <option value="6">6桁</option>
         <option value="7">7桁</option>
         <option value="8">8桁</option>
@@ -28,18 +30,18 @@
       <label for="count">口数:</label>
       <select id="count">
         <option value="3">3口</option>
-        <option value="4" selected>4口</option>
+        <option value="4">4口</option>
         <option value="5">5口</option>
         <option value="7">7口</option>
         <option value="9">9口</option>
-        <option value="10">10口</option>
+        <option value="10" selected>10口</option>
       </select>
 
       <label for="speed">速度:</label>
       <select id="speed">
-          <option value="slow">ゆっくり</option>
-          <option value="normal" selected>ふつう</option>
-          <option value="fast">はやい</option>
+        <option value="slow">ゆっくり</option>
+        <option value="normal" selected>ふつう</option>
+        <option value="fast">はやい</option>
       </select>
 
 
@@ -67,4 +69,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
