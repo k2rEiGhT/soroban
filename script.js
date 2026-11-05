@@ -114,11 +114,13 @@ function start() {
   numbers = generateNumbers(digits, count, mode);
   answer = numbers.reduce((sum, n) => sum + n, 0);
 
-  setTimeout(() => {
-    speakText("ねがいましては", () => {
+  // setTimeoutを外し、クリック直後に発話を開始する
+  speakText("ねがいましては", () => {
+    // 発話後に間を空ける
+    setTimeout(() => {
       speakNextNumber(mode, speedSetting);
-    });
-  }, 1000);
+    }, 800);
+  });
 }
 
 function stop() {
@@ -175,17 +177,12 @@ function speakNumber(num, mode, index = 0, total = 1, callback = null) {
   const prefix = isMinus ? "引いては " : "";
   const suffix = isLast ? "円" : "円なり";
 
-  const utterNumber = new SpeechSynthesisUtterance(`${prefix}${absValue}`);
+  // 1つの文章にまとめる
+  const utterNumber = new SpeechSynthesisUtterance(`${prefix}${absValue}${suffix}`);
   utterNumber.lang = "ja-JP";
 
-  const utterSuffix = new SpeechSynthesisUtterance(suffix);
-  utterSuffix.lang = "ja-JP";
-
   utterNumber.onend = () => {
-    synth.speak(utterSuffix);
-    utterSuffix.onend = () => {
-      if (callback) callback();
-    };
+    if (callback) callback();
   };
 
   synth.speak(utterNumber);
